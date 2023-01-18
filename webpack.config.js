@@ -1,5 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
+const isDevelopment = process.env.WATCHFLIX2_API_KEY !== 'production';
 
 module.exports = {
   entry: './src/index.js',
@@ -11,6 +14,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       // favicon: './src/assets/favicon/favicon.ico'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.parsed),
+      'process.env.WATCHFLIX2_API_KEY': JSON.stringify(
+        isDevelopment ? 'development' : 'production'
+      ),
     }),
   ],
   module: {
