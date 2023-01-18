@@ -1,11 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-export const purge = {
+
+module.exports = {
+  purge: {
     enabled: true,
-    content: ["./src/**/*.{html,js}"],
-};
-export const theme = {
+    content: ['./src/**/*.{html,js}'],
+  },
+  theme: {
     fontFamily: {
-        'roboto': ['Roboto Mono']
-    }
+      roboto: ['Roboto Mono'],
+    },
+  },
+  plugins: [],
 };
-export const plugins = [];
