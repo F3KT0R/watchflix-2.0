@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Search from './Search';
 
-function AllMovies({ fetchUrl, searchUrl }) {
+function AllMovies({ fetchUrl, movieSearch, tvshowSearch, isMovie }) {
   const [movies, setMovies] = useState([]);
 
   //   useEffect(() => {
@@ -11,7 +11,11 @@ function AllMovies({ fetchUrl, searchUrl }) {
 
   return (
     <div>
-      <Search searchURL={searchUrl} />
+      <Search
+        movieSearch={movieSearch}
+        tvshowSearch={tvshowSearch}
+        isMovie={isMovie}
+      />
       <MovieCard />
     </div>
   );

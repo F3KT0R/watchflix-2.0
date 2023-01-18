@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-function Nav() {
-  const [isMovies, setIsMovies] = useState(true);
+function Nav({ callback }) {
+  const [isMovies, setIsMovies] = useState();
+
+  useEffect(() => {
+    callback(isMovies);
+  }, [isMovies]);
 
   return (
     <>
@@ -13,10 +17,16 @@ function Nav() {
           </li>
           <li>
             <NavLink
-              to={isMovies ? '/movies' : '/tvshows'}
-              onClick={() => setIsMovies(!isMovies)}
+              // to={isMovies ? '/movies' : '/tvshows'}
+              onClick={() => {
+                setIsMovies(isMovies === undefined ? true : !isMovies);
+              }}
             >
-              {isMovies ? 'Movies' : 'TV Shows'}
+              {isMovies === undefined
+                ? 'Movies'
+                : isMovies
+                ? 'Movies'
+                : 'TV Shows'}
             </NavLink>
           </li>
         </ul>
