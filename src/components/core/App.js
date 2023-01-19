@@ -13,7 +13,7 @@ function App() {
   }, [navCallback]);
 
   return (
-    <div className='grid text-center align-middle self-center items-center font-roboto text-white bg-black min-h-screen'>
+    <div className='grid text-center align-middle self-center items-center font-roboto text-white selection:bg-gray-800 bg-black min-h-screen'>
       <Nav callback={setNavCallback} />
       <AllMovies fetchUrl={requests.fetchPopularMovies} searchUrl={searchUrl} />
       <Footer />

@@ -30,20 +30,27 @@ function Search({ searchURL }) {
   }, [debounceQuery]);
 
   return (
-    <div>
+    <div className='p-4 items-center text-center justify-center'>
       <input
         type='text'
         name='search'
         placeholder='Search...'
         value={query}
         autoComplete='off'
-        className='text-black p-2'
+        className='p-4 bg-transparent w-full text-center outline-none'
         onChange={(e) => setQuery(e.target.value)}
       ></input>
-      <div>
+      <div className='absolute bg-opacity-90 bg-black left-1/2 transform -translate-x-1/2'>
         <ul>
           {suggestions.map(({ id, title }) => {
-            return <li key={id}>{title}</li>;
+            return (
+              <li
+                key={id}
+                className='py-1 px-10 cursor-pointer hover:scale-[1.2] transition-all hover:px-2'
+              >
+                {title}
+              </li>
+            );
           })}
         </ul>
       </div>
