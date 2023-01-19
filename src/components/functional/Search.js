@@ -2,17 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDebounce } from '../utils/useDebounce';
 
-function Search({ movieSearch, tvshowSearch, isMovie }) {
+function Search({ searchURL }) {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const debounceQuery = useDebounce(query);
-  let searchURL = movieSearch;
-
-  useEffect(() => {
-    searchURL = isMovie ? movieSearch : tvshowSearch;
-    setQuery('');
-    setSuggestions([]);
-  }, [isMovie]);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -28,7 +21,6 @@ function Search({ movieSearch, tvshowSearch, isMovie }) {
               console.log('Axios request aborted!');
             } else console.log(err);
           });
-        console.log(searchURL);
       }
     })();
 
