@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDebounce } from '../utils/useDebounce';
 
-function Search({ searchURL }) {
+export const Search = ({ callback, url }) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const debounceQuery = useDebounce(query);
@@ -14,7 +14,9 @@ function Search({ searchURL }) {
       setSuggestions([]);
       if (debounceQuery.length > 0) {
         await axios
-          .get(searchURL + debounceQuery, { cancelToken: source.token })
+          .get(url + debounceQuery, {
+            cancelToken: source.token,
+          })
           .then((res) => setSuggestions(res.data.results))
           .then((err) => {
             if (axios.isCancel(err)) {
@@ -42,13 +44,14 @@ function Search({ searchURL }) {
       ></input>
       <div className='absolute bg-opacity-90 bg-black left-1/2 transform -translate-x-1/2'>
         <ul>
-          {suggestions.map(({ id, title }) => {
+          {suggestions.map((suggestion) => {
             return (
               <li
-                key={id}
+                key={suggestion.id}
                 className='py-1 px-10 cursor-pointer hover:scale-[1.2] transition-all hover:px-2'
+                onClick={() => callback(suggestion)}
               >
-                {title}
+                {suggestion.title}
               </li>
             );
           })}
@@ -56,6 +59,4 @@ function Search({ searchURL }) {
       </div>
     </div>
   );
-}
-
-export default Search;
+};

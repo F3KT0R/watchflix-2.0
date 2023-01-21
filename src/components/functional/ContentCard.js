@@ -3,17 +3,8 @@ import { truncate } from '../utils/truncate';
 
 const image_base = 'https://image.tmdb.org/t/p/original/';
 
-function MovieCard({
-  id,
-  title,
-  original_title,
-  backdrop_path,
-  poster_path,
-  overview,
-  release_date,
-  vote_average,
-}) {
-  const titleLen = 30;
+export const ContentCard = ({ title, name, backdrop_path, poster_path }) => {
+  const characterLimit = 30;
   return (
     <div>
       <img
@@ -24,10 +15,14 @@ function MovieCard({
         loading='lazy'
       />
       <p className='px-2 cursor-pointer transition-all hover:scale-[1.2]'>
-        {title.length > titleLen ? truncate(title, titleLen) : title}
+        {title
+          ? title.length > characterLimit
+            ? truncate(title, characterLimit)
+            : title
+          : name.length > characterLimit
+          ? truncate(name, characterLimit)
+          : name}
       </p>
     </div>
   );
-}
-
-export default MovieCard;
+};

@@ -1,38 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 
-function Nav({ callback }) {
-  const [isMovies, setIsMovies] = useState();
+export const Nav = ({ callbackToggle }) => {
+  const [isMovies, setIsMovies] = useState(true);
 
   useEffect(() => {
-    callback(isMovies);
+    callbackToggle(isMovies);
   }, [isMovies]);
 
   return (
     <>
       <nav>
-        <ul className='list-none'>
+        <ul className='list-none grid grid-cols-10 py-10'>
           <li>
-            <NavLink to='/'>Home</NavLink>
+            <a className='cursor-pointer selection:bg-transparent' href='/'>
+              Home
+            </a>
           </li>
           <li>
-            <NavLink
-              // to={isMovies ? '/movies' : '/tvshows'}
+            <a
+              className='cursor-pointer selection:bg-transparent'
               onClick={() => {
-                setIsMovies(isMovies === undefined ? true : !isMovies);
+                setIsMovies(!isMovies);
               }}
             >
-              {isMovies === undefined
-                ? 'Movies'
-                : isMovies
-                ? 'Movies'
-                : 'TV Shows'}
-            </NavLink>
+              {isMovies ? 'Movies' : 'TV Shows'}
+            </a>
           </li>
         </ul>
       </nav>
     </>
   );
-}
-
-export default Nav;
+};
