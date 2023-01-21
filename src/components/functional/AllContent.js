@@ -4,12 +4,12 @@ import { ContentCard } from './ContentCard';
 import { Content } from './Content';
 import { Search } from './Search';
 
-export const AllContent = ({ fetchUrl, searchUrl }) => {
+export const AllContent = ({ fetchUrl, searchUrl, toggle }) => {
   const [content, setContent] = useState([]);
   const [pickedContent, setPickedContent] = useState();
-  const data1 = useFetch(fetchUrl, 1);
-  const data2 = useFetch(fetchUrl, 2);
-  const data3 = useFetch(fetchUrl, 3);
+  const data1 = useFetch(fetchUrl, 1, toggle);
+  const data2 = useFetch(fetchUrl, 2, toggle);
+  const data3 = useFetch(fetchUrl, 3, toggle);
 
   useEffect(() => {
     setContent(data1);

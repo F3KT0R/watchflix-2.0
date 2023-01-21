@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export const Nav = ({ callbackToggle }) => {
-  const [isMovies, setIsMovies] = useState(true);
+  const [isMovies, setIsMovies] = useState('movie');
 
   useEffect(() => {
     callbackToggle(isMovies);
@@ -20,10 +20,12 @@ export const Nav = ({ callbackToggle }) => {
             <a
               className='cursor-pointer selection:bg-transparent'
               onClick={() => {
-                setIsMovies(!isMovies);
+                setIsMovies((current) =>
+                  current === 'movie' ? 'tv' : 'movie'
+                );
               }}
             >
-              {isMovies ? 'Movies' : 'TV Shows'}
+              {isMovies === 'movie' ? 'Movies' : 'TV Shows'}
             </a>
           </li>
         </ul>

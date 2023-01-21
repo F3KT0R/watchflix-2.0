@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-export const useFetch = (url, additionalParam) => {
+export const useFetch = (url, additionalParam, toggle) => {
   const [data, setData] = useState([]);
   let request;
   useEffect(() => {
@@ -19,7 +19,7 @@ export const useFetch = (url, additionalParam) => {
     return () => {
       source.cancel();
     };
-  }, [request, additionalParam]);
+  }, [request, additionalParam, toggle]);
 
   return data;
 };
