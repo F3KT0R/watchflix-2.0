@@ -17,11 +17,15 @@ export const Content = ({
 }) => {
   return (
     <div className='grid p-10 align-middle object-center self-center items-center'>
-      <div className='grid align-middle object-center self-center items-center'>
+      <div className='grid grid-cols-8'>
         <img
-          className='max-h-screen object-cover object-center'
-          src={image_base + backdrop_path}
+          className='max-h-screen object-cover object-center col-span-6'
+          src={
+            (backdrop_path && image_base + backdrop_path) ||
+            (poster_path && image_base + poster_path)
+          }
         />
+        <div className='col-span-2 bg-gradient-to-l from-black'></div>
       </div>
     </div>
   );

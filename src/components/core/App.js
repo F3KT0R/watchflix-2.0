@@ -4,7 +4,7 @@ import { AllContent } from '../functional/AllContent';
 import { Footer } from '../functional/Footer';
 import { requests } from '../utils/requests';
 
-function App() {
+export const App = () => {
   const [navToggleCallback, setNavToggleCallback] = useState('movie');
 
   return (
@@ -18,9 +18,7 @@ function App() {
       <Footer />
     </div>
   );
-}
-
-export default App;
+};
 
 /**
  * useSearchParams

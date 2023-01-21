@@ -10,15 +10,10 @@ export const Nav = ({ callbackToggle }) => {
   return (
     <>
       <nav>
-        <ul className='list-none grid grid-cols-10 py-10'>
-          <li>
-            <a className='cursor-pointer selection:bg-transparent' href='/'>
-              Home
-            </a>
-          </li>
+        <ul className='list-none grid py-10'>
           <li>
             <a
-              className='cursor-pointer selection:bg-transparent'
+              className='cursor-pointer selection:bg-transparent border-2 px-10 py-3 rounded border-gray-900 hover:bg-gray-900 hover:border-none'
               onClick={() => {
                 setIsMovies((current) =>
                   current === 'movie' ? 'tv' : 'movie'

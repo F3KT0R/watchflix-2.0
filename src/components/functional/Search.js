@@ -48,10 +48,10 @@ export const Search = ({ callback, url }) => {
             return (
               <li
                 key={suggestion.id}
-                className='py-1 px-10 cursor-pointer hover:scale-[1.2] transition-all hover:px-2'
+                className='py-1 px-12 cursor-pointer hover:scale-[1.1] transition-all'
                 onClick={() => callback(suggestion)}
               >
-                {suggestion.title}
+                {suggestion.title || suggestion.name}
               </li>
             );
           })}
