@@ -13,7 +13,9 @@ module.exports = {
       template: './src/index.html',
       // favicon: './src/assets/favicon/favicon.ico'
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: `./.env.${env}`,
+    }),
   ],
   module: {
     rules: [

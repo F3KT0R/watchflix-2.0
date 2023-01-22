@@ -7,8 +7,8 @@
   "author": "Tibor Bálint <balinttibornb@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "dev": "webpack-dev-server --env development --mode development --open --hot",
+    "build": "webpack --env production --mode production"
   },
   "dependencies": {
     "react": "^18.2.0",
