@@ -34,6 +34,7 @@ export const AllContent = ({ fetchUrl, searchUrl, toggle, pickedToggle }) => {
               {...pickedContent}
               callbackToggle={setPickedContent}
               callbackPopup={setPopup}
+              toggle={toggle}
             />
           </div>
         ) : (
