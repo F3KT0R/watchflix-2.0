@@ -7,6 +7,11 @@ module.exports = {
     content: ['./src/**/*.{html,js}'],
   },
   theme: {
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+    },
     fontFamily: {
       roboto: ['Roboto Mono'],
     },
@@ -16,6 +21,5 @@ module.exports = {
       '3xl': '2000px',
     },
   },
-  extend: {},
   plugins: [],
 };

@@ -27,7 +27,7 @@ export const Popup = ({ content, callback }) => {
 
   return (
     <div className='grid fixed h-full w-full justify-center items-center bg-black bg-opacity-70 z-10'>
-      <div className='grid bg-classy-dark px-10 pt-5 pb-10'>
+      <div className='grid bg-classy-dark px-10 pt-5 pb-10 bg-transparent bg-gradient-to-l from-black'>
         <IoMdClose
           onClick={() => callback(false)}
           className='relative left-full cursor-pointer'

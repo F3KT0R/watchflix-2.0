@@ -1,8 +1,10 @@
-import axios from 'axios';
+import { instance } from '../utils/axios';
 import React, { useEffect, useState } from 'react';
 import { useDebounce } from '../utils/useDebounce';
+import { requests } from '../utils/requests';
+import axios from 'axios';
 
-export const Search = ({ callback, url }) => {
+export const Search = ({ callback, toggle }) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const debounceQuery = useDebounce(query);
@@ -13,8 +15,8 @@ export const Search = ({ callback, url }) => {
     (async () => {
       setSuggestions([]);
       if (debounceQuery.length > 0) {
-        await axios
-          .get(url + debounceQuery, {
+        await instance
+          .get(requests(toggle).fetchSearch + debounceQuery, {
             cancelToken: source.token,
           })
           .then((res) => setSuggestions(res.data.results))
