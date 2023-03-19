@@ -11,14 +11,17 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
-    },
-    fontFamily: {
-      roboto: ['Roboto Mono'],
-    },
-    screens: {
-      xs: '300px',
-      ...defaultTheme.screens,
-      '3xl': '2000px',
+      fontFamily: {
+        roboto: ['Roboto Mono'],
+      },
+      screens: {
+        xs: '300px',
+        ...defaultTheme.screens,
+        '3xl': '2000px',
+      },
+      gridTemplateColumns: {
+        fluid: 'repeat(auto-fit, minmax(22rem, 1fr))',
+      },
     },
   },
   plugins: [],

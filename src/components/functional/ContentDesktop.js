@@ -69,15 +69,16 @@ export const ContentDesktop = ({
             </div>
           </div>
         </div>
-        <div className='grid col-span-10 3xl:grid-cols-6 p-5'>
+        <div className='grid col-span-10 grid-cols-fluid p-5'>
           {data &&
             data.map((item) => {
               return (
                 <div
+                  key={item.id}
                   className='grid col-span-1 p-4 justify-self-center self-center cursor-pointer hover:scale-[1.1] transition-all'
                   onClick={() => callbackToggle(item)}
                 >
-                  <RecommendedContent key={item.id} {...item} />
+                  <RecommendedContent {...item} />
                 </div>
               );
             })}

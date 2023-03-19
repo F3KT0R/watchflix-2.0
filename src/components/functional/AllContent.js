@@ -33,7 +33,7 @@ export const AllContent = ({ toggle, pickedToggle }) => {
   return (
     <>
       {!pickedContent && <Search callback={setPickedContent} toggle={toggle} />}
-      <div className='grid 3xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 xs:grid-cols-3'>
+      <div className='grid grid-cols-3 lg:grid-cols-fluid'>
         {popup && <Popup callback={setPopup} content={pickedContent} />}
         {pickedContent ? (
           <>
